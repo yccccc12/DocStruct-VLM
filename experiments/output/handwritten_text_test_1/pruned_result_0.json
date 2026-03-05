@@ -1,0 +1,149 @@
+{
+    "page_count": null,
+    "width": 730,
+    "height": 514,
+    "model_settings": {
+        "use_doc_preprocessor": false,
+        "use_layout_detection": true,
+        "use_chart_recognition": false,
+        "use_seal_recognition": false,
+        "use_ocr_for_image_block": false,
+        "format_block_content": false,
+        "merge_layout_blocks": true,
+        "markdown_ignore_labels": [
+            "number",
+            "footnote",
+            "header",
+            "header_image",
+            "footer",
+            "footer_image",
+            "aside_text"
+        ],
+        "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+        {
+            "block_label": "text",
+            "block_content": "Hello,\nSimply Noted has developed\nincredible proprietary robotic\ntechnology to write your message\nand envelopes with a genuine\nreal pen. It is completely\nindistinguishable from a humans\nhandwriting.\nTry us today!\nSimply Noted",
+            "block_bbox": [
+                1,
+                25,
+                698,
+                507
+            ],
+            "block_id": 0,
+            "block_order": 1,
+            "group_id": 0,
+            "block_polygon_points": [
+                [
+                    1.0,
+                    25.0
+                ],
+                [
+                    698.0,
+                    25.0
+                ],
+                [
+                    698.0,
+                    507.0
+                ],
+                [
+                    1.0,
+                    507.0
+                ]
+            ]
+        }
+    ],
+    "layout_det_res": {
+        "boxes": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8450675010681152,
+                "coordinate": [
+                    1,
+                    25,
+                    698,
+                    507
+                ],
+                "order": 1,
+                "polygon_points": [
+                    [
+                        1.0,
+                        25.0
+                    ],
+                    [
+                        698.0,
+                        25.0
+                    ],
+                    [
+                        698.0,
+                        507.0
+                    ],
+                    [
+                        1.0,
+                        507.0
+                    ]
+                ]
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.3081488609313965,
+                "coordinate": [
+                    9,
+                    396,
+                    316,
+                    509
+                ],
+                "order": 2,
+                "polygon_points": [
+                    [
+                        315,
+                        399
+                    ],
+                    [
+                        248,
+                        396
+                    ],
+                    [
+                        196,
+                        402
+                    ],
+                    [
+                        13,
+                        407
+                    ],
+                    [
+                        9,
+                        420
+                    ],
+                    [
+                        9,
+                        427
+                    ],
+                    [
+                        9,
+                        493
+                    ],
+                    [
+                        17,
+                        506
+                    ],
+                    [
+                        24,
+                        508
+                    ],
+                    [
+                        308,
+                        506
+                    ],
+                    [
+                        315,
+                        498
+                    ]
+                ]
+            }
+        ]
+    }
+}
