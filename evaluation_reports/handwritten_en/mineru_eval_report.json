@@ -1,0 +1,148 @@
+{
+    "summary": {
+        "average_cer": 0.7579948141745895,
+        "average_wer": 0.9417040358744395
+    },
+    "details": [
+        {
+            "id": "handwritten_en_0000",
+            "gt": "assuredness bella bella marie parlophone a lively song that changes tempo midway",
+            "pred": "ssredesellbellaarecarphelivly song haotemiy",
+            "cer": 0.4875,
+            "wer": 0.9166666666666666
+        },
+        {
+            "id": "handwritten_en_0001",
+            "gt": "i dont think he will storm the charts with this one but it s a good start",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0002",
+            "gt": "chris charles 39 who lives in stocktonontees is an accountant",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0003",
+            "gt": "become a success with a disc and hey presto you re a star rolly sings with",
+            "pred": "become asucces witha diseand he presto yurea starrly sin wit",
+            "cer": 0.20270270270270271,
+            "wer": 0.875
+        },
+        {
+            "id": "handwritten_en_0004",
+            "gt": "tolch as he is known in tin pan alley likes songs with a month in the title he wrote",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0005",
+            "gt": "my september love the big david whitfield hit of 1956",
+            "pred": "my septemoer love the big dovid whitfieid hitl or 1gs6",
+            "cer": 0.1320754716981132,
+            "wer": 0.6
+        },
+        {
+            "id": "handwritten_en_0006",
+            "gt": "he is also a director of a couple of garages and he finds time as well to be a lyric",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0007",
+            "gt": "writer he writes with tolchard evans composer of lady of spain and other big hits",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0008",
+            "gt": "the numbers include scotland the brave men of harlech",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0009",
+            "gt": "fay compton stars in no hiding place i t v 935 pm",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0010",
+            "gt": "she plays the possessive mother of a man whose hobby revolves",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0011",
+            "gt": "round a dolls house",
+            "pred": "round d dolls loase",
+            "cer": 0.15789473684210525,
+            "wer": 0.5
+        },
+        {
+            "id": "handwritten_en_0012",
+            "gt": "three people will be hypnotised in tonights lifeline",
+            "pred": "thee pople wll be lyotsed y tghts itelie",
+            "cer": 0.28846153846153844,
+            "wer": 0.875
+        },
+        {
+            "id": "handwritten_en_0013",
+            "gt": "b b c 1015",
+            "pred": "bbc1015",
+            "cer": 0.3,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0014",
+            "gt": "mcnamaras band greensleeves and english rose",
+            "pred": "me naaras dreeleesd nglist se",
+            "cer": 0.4318181818181818,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0015",
+            "gt": "of rhodesia and nyasaland 1030 pm",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0016",
+            "gt": "they will be asked to comment on the design of everyday articles",
+            "pred": "they will beaed o coet the esignofeveryay rtie",
+            "cer": 0.28125,
+            "wer": 0.75
+        },
+        {
+            "id": "handwritten_en_0017",
+            "gt": "playwright arnold wesker instead muggeridges appointment",
+            "pred": "pla",
+            "cer": 0.9464285714285714,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0018",
+            "gt": "such as a chair and a motorcar the idea is to see what happens when",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        },
+        {
+            "id": "handwritten_en_0019",
+            "gt": "will be with sir roy welensky the premier of the federation",
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
+        }
+    ]
+}
