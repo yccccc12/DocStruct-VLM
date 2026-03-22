@@ -5,7 +5,7 @@ import re
 
 # --- CONFIGURATION ---
 DATASET_TYPE = "handwritten_en"
-MODEL_NAME = "monkey_ocr"
+MODEL_NAME = "mineru"
 
 # Paths
 GT_DIR = os.path.join("data", "raw", DATASET_TYPE, "gt")
@@ -41,6 +41,24 @@ def extract_pred_text(file_id, model_type):
             md_content = f.read()
             return md_content.strip() if md_content else ""
     
+    # -- MinerU --
+    # (JSON output)
+    if model_type == "mineru":
+        
+        # Example path: outputs/handwritten_en/mineru/handwritten_en_000/ocr/handwritten_en_000_content_list.json
+        pred_path = os.path.join(RESULTS_DIR, file_id, "ocr", f"{file_id}_content_list.json")
+
+        with open(pred_path, "r", encoding="utf-8") as f:
+            pred_data = json.load(f)
+
+        if not pred_data:
+            return ""
+
+        item = pred_data[0]
+        if item.get("type") == "text":
+            return item.get("text", "")
+        else:
+            return ""
   
 # def extract_pred_text_from_json(json_data, model_type):
 #     if model_type == "paddle_vl":
