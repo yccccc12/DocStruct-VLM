@@ -5,7 +5,7 @@ import re
 
 # --- CONFIGURATION ---
 DATASET_TYPE = "handwritten_zh"
-MODEL_NAME = "mineru"
+MODEL_NAME = "deepseekOCR2"
 
 # Paths
 GT_DIR = os.path.join("data", "raw", DATASET_TYPE, "gt")
@@ -65,6 +65,16 @@ def extract_pred_text(file_id, model_type):
             return item.get("text", "")
         else:
             return ""
+    
+    # -- DeepSeek OCR --
+    # (Markdown output)
+    if model_type == "deepseekOCR2":
+        pred_path = os.path.join(RESULTS_DIR, file_id, f"result.mmd")
+
+        with open(pred_path, "r", encoding="utf-8") as f:
+            mmd_content = f.read()
+            return mmd_content.strip() if mmd_content else ""
+    
 # def extract_pred_text_from_json(json_data, model_type):
 #     if model_type == "paddle_vl":
 #         res_list = json_data.get("parsing_res_list", [])
