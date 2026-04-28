@@ -1,149 +1,149 @@
 {
-    "model": "mineru",
+    "model": "tesseract",
     "summary": {
-        "average_cer": 0.766798418972332,
-        "average_wer": 0.9518072289156626
+        "average_cer": 0.33043478260869563,
+        "average_wer": 0.6907630522088354
     },
     "details": [
         {
             "id": "handwritten_en_0000",
             "gt": "assuredness \" Bella Bella Marie \" ( Parlophone ), a lively song that changes tempo mid-way.",
-            "pred": "ssredes\"ellBellaareCarphe,livly song haotemiy",
-            "cer": 0.5274725274725275,
-            "wer": 0.9375
+            "pred": "xssuredness \"Bella Bella Narie\" ( Rarlophone ), o lively song that chonge tempo mid-way.",
+            "cer": 0.08791208791208792,
+            "wer": 0.5
         },
         {
             "id": "handwritten_en_0001",
             "gt": "I don't think he will storm the charts with this one, but it's a good start.",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "} dont thinu he will Storm the charts with this one bat iV a good Sart.",
+            "cer": 0.14473684210526316,
+            "wer": 0.5
         },
         {
             "id": "handwritten_en_0002",
             "gt": "CHRIS CHARLES, 39, who lives in Stockton-on-Tees, is an accountant.",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "CHRIS CHARLES, 33, who lives in Stocuton-on - Tees isan accountant.",
+            "cer": 0.08955223880597014,
+            "wer": 0.5
         },
         {
             "id": "handwritten_en_0003",
             "gt": "Become a success with a disc and hey presto! You're a star.... Rolly sings with",
-            "pred": "Become asucces witha diseand he presto! Yu'rea starRly sin wit",
-            "cer": 0.22784810126582278,
-            "wer": 0.8666666666666667
+            "pred": "Become o success with a dise and hey presto: You're a star... Rolly Sings wl th",
+            "cer": 0.08860759493670886,
+            "wer": 0.4666666666666667
         },
         {
             "id": "handwritten_en_0004",
             "gt": "Tolch, as he is known in Tin Pan Alley, likes songs with a month in the title. He wrote",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "lolch, as he is unown in Tin Pan Alley, lines songs with a month in the title, He wrote",
+            "cer": 0.04597701149425287,
+            "wer": 0.21052631578947367
         },
         {
             "id": "handwritten_en_0005",
             "gt": "\" My September Love, \" the big David Whitfield hit of 1956.",
-            "pred": "My Septemoer love\", the big Dovid whitfieid hitl or 1gs6",
-            "cer": 0.2542372881355932,
+            "pred": "yKy Sep temoey love\", lhe big David Whilgieid hitop 1956.",
+            "cer": 0.2711864406779661,
             "wer": 0.75
         },
         {
             "id": "handwritten_en_0006",
             "gt": "He is also a director of a couple of garages. And he finds time as well to be a lyric",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "He is also a director of a couple of garages. And he ginds time as well bo bea lyric",
+            "cer": 0.03529411764705882,
+            "wer": 0.2
         },
         {
             "id": "handwritten_en_0007",
             "gt": "writer. He writes with Tolchard Evans, composer of \" Lady of Spain \" and other big hits.",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "writer. He wrikes with Tolchard Evans, COMPOSE FOF N Lady of Spain' and olher big hits.",
+            "cer": 0.18181818181818182,
+            "wer": 0.4117647058823529
         },
         {
             "id": "handwritten_en_0008",
             "gt": "The numbers include \" Scotland the Brave, \" \" Men of Harlech, \"",
-            "pred": "",
-            "cer": 1.0,
+            "pred": "he yumb er Hye du ole A etadl Lhe Prave\" \"Mey of Har leh\"",
+            "cer": 0.4603174603174603,
             "wer": 1.0
         },
         {
             "id": "handwritten_en_0009",
             "gt": "Fay Compton stars in \" No Hiding Place \" (I T V, 9.35 p.m. ).",
-            "pred": "",
-            "cer": 1.0,
+            "pred": "ray Comp toy stows 4. Wo Hi dieg Chace \" (11 Y, 1.35 pu.) '",
+            "cer": 0.39344262295081966,
             "wer": 1.0
         },
         {
             "id": "handwritten_en_0010",
             "gt": "She plays the possessive mother of a man whose hobby revolves",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "She p/4s he pessexive panblee of A way ident hobby rew Lye",
+            "cer": 0.4262295081967213,
+            "wer": 0.8181818181818182
         },
         {
             "id": "handwritten_en_0011",
             "gt": "round a doll's house.",
-            "pred": "round d doll's loase.",
-            "cer": 0.14285714285714285,
-            "wer": 0.5
+            "pred": "bolls loake - round",
+            "cer": 0.7619047619047619,
+            "wer": 1.0
         },
         {
             "id": "handwritten_en_0012",
             "gt": "THREE people will be hypnotised in tonight's \" Lifeline \"",
-            "pred": "THEE pople wll be lyotsed y tghts itelie",
-            "cer": 0.3508771929824561,
-            "wer": 0.9
+            "pred": "FUREE people will he heyy yodscal 4 fogisiha's \" Lite Liye\"",
+            "cer": 0.42105263157894735,
+            "wer": 0.8
         },
         {
             "id": "handwritten_en_0013",
             "gt": "( B B C, 10.15 ).",
-            "pred": "(BBC,10.15).",
-            "cer": 0.29411764705882354,
+            "pred": "BBE, 0.18).",
+            "cer": 0.47058823529411764,
             "wer": 1.0
         },
         {
             "id": "handwritten_en_0014",
             "gt": "\" McNamara's Band, \" \" Greensleeves \" and \" English Rose. \"",
-            "pred": "\"Me Naaras d,\"\"reeleesd nglist se.\"",
-            "cer": 0.4745762711864407,
-            "wer": 1.0
+            "pred": "ie Yawara's Prnid, \"4 dreeys Leeves\" and \" bag bh bose,\"",
+            "cer": 0.4067796610169492,
+            "wer": 0.8333333333333334
         },
         {
             "id": "handwritten_en_0015",
             "gt": "of Rhodesia and Nyasaland ( 10.30 p.m. ).",
-            "pred": "",
-            "cer": 1.0,
+            "pred": "iS Phode3,a aud phy asa bona (10.3090).",
+            "cer": 0.4878048780487805,
             "wer": 1.0
         },
         {
             "id": "handwritten_en_0016",
             "gt": "They will be asked to comment on the design of everyday articles",
-            "pred": "They will beaed o coet the esignofeveryay rtie",
-            "cer": 0.28125,
-            "wer": 0.75
+            "pred": "",
+            "cer": 1.0,
+            "wer": 1.0
         },
         {
             "id": "handwritten_en_0017",
             "gt": "playwright Arnold Wesker. \" Instead, Muggeridge's appointment",
-            "pred": "pla",
-            "cer": 0.9508196721311475,
+            "pred": "",
+            "cer": 1.0,
             "wer": 1.0
         },
         {
             "id": "handwritten_en_0018",
             "gt": "such as a chair and a motor-car. The idea is to see what happens when",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "Such a3 a phair au ol a wuoter = tar The idea iS ke See what Lappegs wha",
+            "cer": 0.3333333333333333,
+            "wer": 0.8666666666666667
         },
         {
             "id": "handwritten_en_0019",
             "gt": "will be with Sir Roy Welensky the Premier of the Federation",
-            "pred": "",
-            "cer": 1.0,
-            "wer": 1.0
+            "pred": "wy Lf be math Ke hoy welen shy Ye freu jer sf ber 4e der atfoy",
+            "cer": 0.4745762711864407,
+            "wer": 1.3636363636363635
         }
     ]
 }

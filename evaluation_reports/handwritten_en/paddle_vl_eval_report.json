@@ -1,146 +1,147 @@
 {
+    "model": "paddle_vl",
     "summary": {
-        "average_cer": 0.036300777873811585,
-        "average_wer": 0.15246636771300448
+        "average_cer": 0.05375494071146245,
+        "average_wer": 0.2570281124497992
     },
     "details": [
         {
             "id": "handwritten_en_0000",
-            "gt": "assuredness bella bella marie parlophone a lively song that changes tempo midway",
-            "pred": "assuredness bella bella marie parlophone a lively song that changes tempo midway",
-            "cer": 0.0,
-            "wer": 0.0
+            "gt": "assuredness \" Bella Bella Marie \" ( Parlophone ), a lively song that changes tempo mid-way.",
+            "pred": "assuredness \"Bella Bella Marie\" (Parlophone), a lively song that changes tempo mid-way.",
+            "cer": 0.04395604395604396,
+            "wer": 0.4375
         },
         {
             "id": "handwritten_en_0001",
-            "gt": "i dont think he will storm the charts with this one but it s a good start",
-            "pred": "dont thinu he will storm the charts with this one oat its a good start",
-            "cer": 0.0821917808219178,
-            "wer": 0.29411764705882354
+            "gt": "I don't think he will storm the charts with this one, but it's a good start.",
+            "pred": "don't thinu he will storm the charts with this one, oat it's a good start.",
+            "cer": 0.06578947368421052,
+            "wer": 0.1875
         },
         {
             "id": "handwritten_en_0002",
-            "gt": "chris charles 39 who lives in stocktonontees is an accountant",
-            "pred": "chris charles 39 who lives in stocktonontees is an accountant",
+            "gt": "CHRIS CHARLES, 39, who lives in Stockton-on-Tees, is an accountant.",
+            "pred": "CHRIS CHARLES, 39, who lives in Stockton-on-Tees, is an accountant.",
             "cer": 0.0,
             "wer": 0.0
         },
         {
             "id": "handwritten_en_0003",
-            "gt": "become a success with a disc and hey presto you re a star rolly sings with",
-            "pred": "become a success with a disease and hey presto youre a star rolly sings with",
-            "cer": 0.06756756756756757,
-            "wer": 0.1875
+            "gt": "Become a success with a disc and hey presto! You're a star.... Rolly sings with",
+            "pred": "Become a success with a disease and hey presto! You're a star... Rolly sings with",
+            "cer": 0.06329113924050633,
+            "wer": 0.13333333333333333
         },
         {
             "id": "handwritten_en_0004",
-            "gt": "tolch as he is known in tin pan alley likes songs with a month in the title he wrote",
-            "pred": "tolch as he is unknown in tin pan alley lives songs with a month in the title he wrote",
-            "cer": 0.03571428571428571,
+            "gt": "Tolch, as he is known in Tin Pan Alley, likes songs with a month in the title. He wrote",
+            "pred": "Tolch, as he is unknown in Tin Pan Alley, lives songs with a month in the title. He wrote",
+            "cer": 0.034482758620689655,
             "wer": 0.10526315789473684
         },
         {
             "id": "handwritten_en_0005",
-            "gt": "my september love the big david whitfield hit of 1956",
-            "pred": "my september love the big david whitfield hit of 1956",
-            "cer": 0.0,
-            "wer": 0.0
+            "gt": "\" My September Love, \" the big David Whitfield hit of 1956.",
+            "pred": "\"My September love\", the big David Whitfield hit of 1956.",
+            "cer": 0.0847457627118644,
+            "wer": 0.3333333333333333
         },
         {
             "id": "handwritten_en_0006",
-            "gt": "he is also a director of a couple of garages and he finds time as well to be a lyric",
-            "pred": "he is also a director of a couple of garages and he finds time as well to be a lyric",
+            "gt": "He is also a director of a couple of garages. And he finds time as well to be a lyric",
+            "pred": "He is also a director of a couple of garages. And he finds time as well to be a lyric",
             "cer": 0.0,
             "wer": 0.0
         },
         {
             "id": "handwritten_en_0007",
-            "gt": "writer he writes with tolchard evans composer of lady of spain and other big hits",
-            "pred": "writer he writes with tolchard evans composer of lady of spain and other big hits",
-            "cer": 0.0,
-            "wer": 0.0
+            "gt": "writer. He writes with Tolchard Evans, composer of \" Lady of Spain \" and other big hits.",
+            "pred": "writer. He writes with Tolchard Evans, composer of \" Lady of Spain\" and other big hits.",
+            "cer": 0.011363636363636364,
+            "wer": 0.11764705882352941
         },
         {
             "id": "handwritten_en_0008",
-            "gt": "the numbers include scotland the brave men of harlech",
-            "pred": "the numbers include scotland the brave men of harleth",
-            "cer": 0.018867924528301886,
-            "wer": 0.1111111111111111
+            "gt": "The numbers include \" Scotland the Brave, \" \" Men of Harlech, \"",
+            "pred": "The numbers include \"Scotland the Brave,\" \"Men of Harleth,\"",
+            "cer": 0.07936507936507936,
+            "wer": 0.6153846153846154
         },
         {
             "id": "handwritten_en_0009",
-            "gt": "fay compton stars in no hiding place i t v 935 pm",
-            "pred": "ray compton stars in no hiding place itv 933 pm",
-            "cer": 0.08163265306122448,
-            "wer": 0.4166666666666667
+            "gt": "Fay Compton stars in \" No Hiding Place \" (I T V, 9.35 p.m. ).",
+            "pred": "Ray Compton stars in \" No Hiding Place \" ( ITV, 9.33 p.m.).",
+            "cer": 0.09836065573770492,
+            "wer": 0.4666666666666667
         },
         {
             "id": "handwritten_en_0010",
-            "gt": "she plays the possessive mother of a man whose hobby revolves",
-            "pred": "she plays the possessive rather of a way whose hobby revolves",
+            "gt": "She plays the possessive mother of a man whose hobby revolves",
+            "pred": "She plays the possessive rather of a way whose hobby revolves",
             "cer": 0.06557377049180328,
             "wer": 0.18181818181818182
         },
         {
             "id": "handwritten_en_0011",
-            "gt": "round a dolls house",
-            "pred": "round a dolls house",
+            "gt": "round a doll's house.",
+            "pred": "round a doll's house.",
             "cer": 0.0,
             "wer": 0.0
         },
         {
             "id": "handwritten_en_0012",
-            "gt": "three people will be hypnotised in tonights lifeline",
-            "pred": "three people will be trynotised in tonights lifeline",
-            "cer": 0.057692307692307696,
-            "wer": 0.125
+            "gt": "THREE people will be hypnotised in tonight's \" Lifeline \"",
+            "pred": "THREE people will be try-notised in tonight's \" Lifeline\"",
+            "cer": 0.07017543859649122,
+            "wer": 0.3
         },
         {
             "id": "handwritten_en_0013",
-            "gt": "b b c 1015",
-            "pred": "bbe 1015",
-            "cer": 0.3,
-            "wer": 0.75
+            "gt": "( B B C, 10.15 ).",
+            "pred": "(BBE, 10.15).",
+            "cer": 0.29411764705882354,
+            "wer": 1.0
         },
         {
             "id": "handwritten_en_0014",
-            "gt": "mcnamaras band greensleeves and english rose",
-            "pred": "me namaras boyd breeysleeves and english hose",
-            "cer": 0.1590909090909091,
-            "wer": 0.8333333333333334
+            "gt": "\" McNamara's Band, \" \" Greensleeves \" and \" English Rose. \"",
+            "pred": "\"Me Namara's boyd,\" \" Breeysleeves\" and \" English hose. \"",
+            "cer": 0.1864406779661017,
+            "wer": 0.5833333333333334
         },
         {
             "id": "handwritten_en_0015",
-            "gt": "of rhodesia and nyasaland 1030 pm",
-            "pred": "of rhodes a and nyasaland 1030 gm",
-            "cer": 0.06060606060606061,
-            "wer": 0.5
+            "gt": "of Rhodesia and Nyasaland ( 10.30 p.m. ).",
+            "pred": "of Rhodes, a and Nyasaland (10.30 g.m.).",
+            "cer": 0.12195121951219512,
+            "wer": 0.75
         },
         {
             "id": "handwritten_en_0016",
-            "gt": "they will be asked to comment on the design of everyday articles",
-            "pred": "they will be asked to comment on the design of everyday articles",
+            "gt": "They will be asked to comment on the design of everyday articles",
+            "pred": "They will be asked to comment on the design of everyday articles",
             "cer": 0.0,
             "wer": 0.0
         },
         {
             "id": "handwritten_en_0017",
-            "gt": "playwright arnold wesker instead muggeridges appointment",
-            "pred": "playwright aryold wesler instead nuggeridges appointment",
-            "cer": 0.05357142857142857,
-            "wer": 0.5
+            "gt": "playwright Arnold Wesker. \" Instead, Muggeridge's appointment",
+            "pred": "playwright Aryold Wesler.\" Instead, Nuggeridge's appointment",
+            "cer": 0.06557377049180328,
+            "wer": 0.5714285714285714
         },
         {
             "id": "handwritten_en_0018",
-            "gt": "such as a chair and a motorcar the idea is to see what happens when",
-            "pred": "such as a chair and a moorcar the idea is to see what happens when",
-            "cer": 0.014925373134328358,
+            "gt": "such as a chair and a motor-car. The idea is to see what happens when",
+            "pred": "such as a chair and a moor-car. The idea is to see what happens when",
+            "cer": 0.014492753623188406,
             "wer": 0.06666666666666667
         },
         {
             "id": "handwritten_en_0019",
-            "gt": "will be with sir roy welensky the premier of the federation",
-            "pred": "will be with sir roy welensky the premier of the federation",
+            "gt": "will be with Sir Roy Welensky the Premier of the Federation",
+            "pred": "will be with Sir Roy Welensky the Premier of the Federation",
             "cer": 0.0,
             "wer": 0.0
         }
