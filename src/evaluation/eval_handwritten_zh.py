@@ -1,157 +1,157 @@
 import os
 import json
 import jiwer
-import re
+import unicodedata
 
 # --- CONFIGURATION ---
 DATASET_TYPE = "handwritten_zh"
-MODEL_NAME = "deepseekOCR2"
+MODELS = ["paddle_vl", "monkey_ocr", "mineru", "deepseekOCR2", "tesseract"]
 
-# Paths
 GT_DIR = os.path.join("data", "raw", DATASET_TYPE, "gt")
-RESULTS_DIR = os.path.join("outputs", DATASET_TYPE, MODEL_NAME)
-EVALUATION_REPORT_PATH = os.path.join("evaluation_reports", DATASET_TYPE, f"{MODEL_NAME}_eval_report.json")
 
-def normalize_zh(text):
-    """Standardize Chinese text for fair comparison."""
-    if not text: return ""
-    
-    # Convert to lowercase (for any mixed English terms)
-    text = text.lower()
-    
-    # Remove all remaining punctuation and special symbols
-    text = re.sub(r'[^\w\s]', '', text)
-    
-    # Remove ALL spaces (Chinese doesn't use them; spaces are usually OCR noise)
+
+# -----------------------------
+# NORMALIZATION
+# -----------------------------
+def normalize(text):
+    if not text:
+        return ""
+
+    # Unicode normalization
+    text = unicodedata.normalize("NFKC", text)
+
+    # Standardize punctuation
+    text = text.replace("“", '"').replace("”", '"')
+    text = text.replace("‘", "'").replace("’", "'")
+
+    # Remove all spaces
     text = "".join(text.split())
-    
+
     return text.strip()
 
-def extract_pred_text(file_id, model_type): 
 
-    # -- PaddleOCR-VL -- 
-    # (JSON output)
-    if model_type == "paddle_vl":
-        pred_path = os.path.join(RESULTS_DIR, file_id, "pruned_result_0.json")
+# -----------------------------
+# EXTRACT PREDICTION
+# -----------------------------
+def extract_pred_text(file_id, model_type, results_dir):
+    try:
+        # -- PaddleOCR-VL --
+        if model_type == "paddle_vl":
+            pred_path = os.path.join(results_dir, file_id, "pruned_result_0.json")
 
-        with open(pred_path, "r", encoding="utf-8") as f:
-            pred_data = json.load(f)
-            res_list = pred_data.get("parsing_res_list", [])
-            return res_list[0].get("block_content", "") if res_list else ""
+            with open(pred_path, "r", encoding="utf-8") as f:
+                pred_data = json.load(f)
+                res_list = pred_data.get("parsing_res_list", [])
+                return res_list[0].get("block_content", "") if res_list else ""
+
+        # -- MonkeyOCR --
+        elif model_type == "monkey_ocr":
+            pred_path = os.path.join(results_dir, file_id, f"{file_id}_text_result.md")
+
+            with open(pred_path, "r", encoding="utf-8") as f:
+                return f.read().strip()
         
-    # -- MonkeyOCR -- 
-    # (Markdown output)
-    if model_type == "monkey_ocr":
-        pred_path = os.path.join(RESULTS_DIR, file_id, f"{file_id}_text_result.md")
+        # -- MinerU --
+        elif model_type == "mineru":
+            pred_path = os.path.join(results_dir, file_id, "ocr", f"{file_id}_content_list.json")
+            with open(pred_path, "r", encoding="utf-8") as f:
+                pred_data = json.load(f)
 
-        with open(pred_path, "r", encoding="utf-8") as f:
-            md_content = f.read()
-            return md_content.strip() if md_content else ""
-    
-    # -- MinerU --
-    # (JSON output)
-    if model_type == "mineru":
-        
-        pred_path = os.path.join(RESULTS_DIR, file_id, "ocr", f"{file_id}_content_list.json")
+            if not pred_data:
+                return ""
 
-        with open(pred_path, "r", encoding="utf-8") as f:
-            pred_data = json.load(f)
+            item = pred_data[0]
+            return item.get("text", "") if item.get("type") == "text" else ""
 
-        if not pred_data:
-            return ""
+        # -- DeepSeek OCR --
+        elif model_type == "deepseekOCR2":
+            pred_path = os.path.join(results_dir, file_id, "result.mmd")
+            with open(pred_path, "r", encoding="utf-8") as f:
+                return f.read().strip()
 
-        item = pred_data[0]
-        if item.get("type") == "text":
-            return item.get("text", "")
-        else:
-            return ""
-    
-    # -- DeepSeek OCR --
-    # (Markdown output)
-    if model_type == "deepseekOCR2":
-        pred_path = os.path.join(RESULTS_DIR, file_id, f"result.mmd")
+        # -- Tesseract --
+        elif model_type == "tesseract":
+            pred_path = os.path.join(results_dir, file_id, "result.txt")
+            with open(pred_path, "r", encoding="utf-8") as f:
+                return f.read().strip()
 
-        with open(pred_path, "r", encoding="utf-8") as f:
-            mmd_content = f.read()
-            return mmd_content.strip() if mmd_content else ""
-    
-# def extract_pred_text_from_json(json_data, model_type):
-#     if model_type == "paddle_vl":
-#         res_list = json_data.get("parsing_res_list", [])
-#         return res_list[0].get("block_content", "") if res_list else ""
-    
-#     if model_type == "deepseek_ocr":
-#         return json_data.get("text", "")
-#     return ""
+    except Exception as e:
+        print(f"[WARNING] {model_type} missing file for {file_id}: {e}")
+        return ""
 
+
+# -----------------------------
+# MAIN EVALUATION
+# -----------------------------
 def run_evaluation():
-    if not os.path.exists(GT_DIR):
-        print(f"Error: GT directory not found at {GT_DIR}")
-        return
-
     gt_files = [f for f in os.listdir(GT_DIR) if f.endswith(".json")]
-    
-    results = []
-    all_gt = []
-    all_pred = []
 
-    print(f"Evaluating {len(gt_files)} Chinese samples (CER Only)...\n")
+    print(f"Evaluating {len(gt_files)} Chinese samples...\n")
 
-    for gt_file in gt_files:
-        file_id = os.path.splitext(gt_file)[0]
-        
-        # Load Ground Truth
-        with open(os.path.join(GT_DIR, gt_file), "r", encoding="utf-8") as f:
-            gt_data = json.load(f)
-            gt_text = normalize_zh(gt_data.get("text", ""))
+    for MODEL_NAME in MODELS:
+        print("=" * 40)
+        print(f"Evaluating model: {MODEL_NAME}")
+        print("=" * 40)
 
-        raw_pred_text = extract_pred_text(file_id, MODEL_NAME)
+        RESULTS_DIR = os.path.join("outputs", DATASET_TYPE, MODEL_NAME)
+        REPORT_PATH = os.path.join(
+            "evaluation_reports",
+            DATASET_TYPE,
+            f"{MODEL_NAME}_eval_report.json"
+        )
 
-        # Load Prediction
-        # pred_path = os.path.join(RESULTS_DIR, file_id, "pruned_result_0.json")
-        
-        # if not os.path.exists(pred_path):
-        #     print(f"Skipping {file_id}: Prediction file not found.")
-        #     continue
+        results = []
+        all_gt = []
+        all_pred = []
 
-        # with open(pred_path, "r", encoding="utf-8") as f:
-        #     pred_data = json.load(f)
-        #     raw_pred_text = extract_pred_text_from_json(pred_data, MODEL_NAME)
+        for i, gt_file in enumerate(gt_files, 1):
+            file_id = os.path.splitext(gt_file)[0]
+
+            print(f"[{i}/{len(gt_files)}] {file_id}")
+
+            # --- Load GT ---
+            with open(os.path.join(GT_DIR, gt_file), "r", encoding="utf-8") as f:
+                gt_data = json.load(f)
+                gt_text = normalize(gt_data.get("text", ""))
+
+            # --- Load Prediction ---
+            raw_pred_text = extract_pred_text(file_id, MODEL_NAME, RESULTS_DIR)
+            pred_text = normalize(raw_pred_text)
             
-        pred_text = normalize_zh(raw_pred_text)
+            # -- Metric --
+            cer = jiwer.cer(gt_text, pred_text) if gt_text else 1.0
 
-        # Calculate individual CER only
-        cer = jiwer.cer(gt_text, pred_text) if gt_text else 1.0
+            results.append({
+                "id": file_id,
+                "gt": gt_text,
+                "pred": pred_text,
+                "cer": cer
+            })
 
-        results.append({
-            "id": file_id,
-            "gt": gt_text,
-            "pred": pred_text,
-            "cer": cer
-        })
-        
-        all_gt.append(gt_text)
-        all_pred.append(pred_text)
+            all_gt.append(gt_text)
+            all_pred.append(pred_text)
 
-    # 2. Calculate Global CER
-    total_cer = jiwer.cer(all_gt, all_pred)
+        # --- Global Metric ---
+        total_cer = jiwer.cer(all_gt, all_pred)
 
-    # 3. Print Summary
-    print("-" * 30)
-    print(f"FINAL RESULTS for {MODEL_NAME} ({DATASET_TYPE})")
-    print(f"Average CER: {total_cer:.4f} ({total_cer*100:.2f}%)")
-    print(f"Note: WER skipped for Chinese evaluation.")
-    print("-" * 30)
+        print("-" * 30)
+        print(f"FINAL RESULTS for {MODEL_NAME}")
+        print(f"Average CER: {total_cer:.4f} ({total_cer*100:.2f}%)")
+        print("-" * 30)
 
-    # 4. Save detailed report (ensure_ascii=False is vital here!)
-    os.makedirs(os.path.dirname(EVALUATION_REPORT_PATH), exist_ok=True)
-    with open(EVALUATION_REPORT_PATH, "w", encoding="utf-8") as f:
-        json.dump({
-            "summary": {"average_cer": total_cer},
-            "details": results
-        }, f, indent=4, ensure_ascii=False)
+        # --- Save report ---
+        os.makedirs(os.path.dirname(REPORT_PATH), exist_ok=True)
 
-    print(f"Detailed report saved to: {EVALUATION_REPORT_PATH}")
+        with open(REPORT_PATH, "w", encoding="utf-8") as f:
+            json.dump({
+                "model": MODEL_NAME,
+                "summary": {
+                    "average_cer": total_cer
+                },
+                "details": results
+            }, f, indent=4, ensure_ascii=False)
+    
+        print(f"Saved: {REPORT_PATH}\n")
 
 if __name__ == "__main__":
     run_evaluation()
