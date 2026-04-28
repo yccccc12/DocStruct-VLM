@@ -1,0 +1,12 @@
+datasets
+pillow
+fsspec==2026.1.0
+transformers
+python-dotenv
+editdistance
+beautifulsoup4
+scikit-image
+opencv-python
+jiwer
+gradio-client
+pytesseract
