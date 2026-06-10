@@ -10,7 +10,8 @@ load_dotenv()
 
 # --- CONFIGURATION ---
 DATASET_TYPES = ["handwritten_en", "handwritten_zh"]  # Change to "handwritten_en" for English dataset
-MODEL_NAME = "paddle_vl"                            # Model identifier for output organization
+TABLE_DATASET_TYPE = "table_by_level"                 # Dataset identifier for tables
+MODEL_NAME = "paddle_vl"                              # Model identifier for output organization
 
 # API Credentials from .env
 API_URL = os.getenv("PaddleOCR_VL_API_URL")
@@ -153,5 +154,91 @@ def run_batch_ocr():
     print("All datasets processed!")
     print("="*40)
 
+def run_batch_ocr_table_levels():
+    """
+    Process all images inside `data/raw/table_by_level/level_X/img` folders
+    using PaddleOCR-VL, save results per level, record processing time,
+    and write times to a text file.
+    """
+    input_folder = os.path.join("data", "raw", TABLE_DATASET_TYPE)  # e.g., "table_by_level"
+    base_output_dir = os.path.join("outputs", "table_by_level", MODEL_NAME)
+    os.makedirs(base_output_dir, exist_ok=True)
+
+    # Output folder for the time log
+    time_log_dir = os.path.join("outputs", "table", "paddleocr")
+    os.makedirs(time_log_dir, exist_ok=True)
+    time_log_path = os.path.join(time_log_dir, "processing_time.txt")
+
+    total_start_time = time.time()
+    log_lines = []
+
+    # Loop through level folders
+    for level_name in sorted(os.listdir(input_folder)):
+        level_path = os.path.join(input_folder, level_name)
+        img_folder = os.path.join(level_path, "img")  # images are inside img/
+
+        if not os.path.isdir(img_folder):
+            print(f"Warning: img folder not found in {level_name}, skipping...")
+            continue
+
+        level_output_dir = os.path.join(base_output_dir, level_name)
+        os.makedirs(level_output_dir, exist_ok=True)
+
+        # Find images inside img/
+        image_files = []
+        for ext in ("*.png", "*.jpg", "*.jpeg"):
+            image_files.extend(glob.glob(os.path.join(img_folder, ext)))
+
+        if not image_files:
+            print(f"No images found in: {img_folder}")
+            continue
+
+        print(f"\n{'='*40}")
+        print(f"LEVEL: {level_name}")
+        print(f"Found {len(image_files)} images")
+        print(f"{'='*40}")
+
+        # Timer for this level
+        level_start_time = time.time()
+
+        # Process images in this level
+        for i, img_path in enumerate(image_files, 1):
+            img_name = os.path.basename(img_path)
+            print(f"\n[{i}/{len(image_files)}] Processing: {img_name}")
+
+            try:
+                process_document_with_paddle(
+                    file_path=img_path,
+                    api_url=API_URL,
+                    token=TOKEN,
+                    output_dir=level_output_dir
+                )
+            except Exception as e:
+                print(f"!!! Error processing {img_name}: {e}")
+
+        level_elapsed = time.time() - level_start_time
+        avg_time = level_elapsed / len(image_files)
+        log_line = (f"LEVEL: {level_name}\n"
+                    f"Total time: {level_elapsed:.2f} seconds\n"
+                    f"Average per image: {avg_time:.2f} seconds\n")
+        log_lines.append(log_line)
+
+        print(f"\n✅ Finished LEVEL: {level_name}")
+        print(log_line)
+
+    total_elapsed = time.time() - total_start_time
+    total_log = f"Total time for all levels: {total_elapsed:.2f} seconds\n"
+    log_lines.append(total_log)
+    print("\n" + "="*40)
+    print("✅ All levels processed!")
+    print(total_log)
+    print("="*40)
+
+    # Save log to text file
+    with open(time_log_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(log_lines))
+    print(f"Processing times saved to: {time_log_path}")
+
 if __name__ == "__main__":
-    run_batch_ocr()
+    # run_batch_ocr()
+    run_batch_ocr_table_levels()
