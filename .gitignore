@@ -5,3 +5,4 @@ data/
 temp/
 outputs/
 __pycache__/
+experiments/
