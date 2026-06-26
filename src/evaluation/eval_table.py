@@ -732,6 +732,7 @@ def evaluate(
 # =====================================================================
 
 MODELS = [
+    "baidu_ocr",
     "deepseekOCR",
     "deepseekOCR2",
     "dots_mocr",
@@ -880,6 +881,7 @@ def _resolve_prediction_path(model: str, table_dir: Path, table_id: str) -> Path
     # one is used. Both the current (new) layout and the older layout are kept
     # so leftover folders from previous runs still resolve.
     candidates = {
+        "baidu_ocr": [table_dir / "result.md"],
         "deepseekOCR": [table_dir / "result.mmd"],
         "deepseekOCR2": [table_dir / "result.mmd"],
         "dots_mocr": [table_dir / f"{table_id}.md"],
