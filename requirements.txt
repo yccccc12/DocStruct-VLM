@@ -4,6 +4,7 @@ fsspec==2026.1.0
 transformers
 python-dotenv
 editdistance
+apted
 beautifulsoup4
 scikit-image
 opencv-python
